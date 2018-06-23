@@ -1,5 +1,6 @@
 package pl.edu.agh.mwo.lazyminds.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -47,6 +48,19 @@ public class User {
 			return false;
 		}
 
+	}
+	
+	public void addWorkUnit(WorkUnit workunit) {
+		if (this.workUnits==null) {
+			this.workUnits=new ArrayList<WorkUnit>();
+		}
+		workUnits.add(workunit);
+	}
+
+	public User(String name, String surname) {
+		super();
+		this.name = name;
+		this.surname = surname;
 	}
 
 }
