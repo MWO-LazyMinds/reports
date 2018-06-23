@@ -1,6 +1,10 @@
 package pl.edu.agh.mwo.lazyminds;
 
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import pl.edu.agh.mwo.lazyminds.data.Reader;
 
 public class Reports {
 
@@ -13,40 +17,39 @@ public class Reports {
 			String submenu = "";
 			while (true) {
 
-				// Menu g³ówne u¿ytkownika
-				System.out.println("Podaj numer operacji lub wpisz 'exit' jeœli chcesz zakoñczyæ program.");
-				System.out.println("1\tRoczny raport godzin dla pracowników.");
-				System.out.println("2\tRoczny raport godzin dla projektów.");
-				System.out.println("3\tRaport projektów pracownika.");
-				System.out.println("4\tRaport nak³adu pracy na projekt dla pracowników.");
-				System.out.println("5\tRaport pracowników w danym projekcie");
+				// Menu glowne uzytkownika
+				System.out.println("Podaj numer operacji lub wpisz 'exit' jeÅ›li chcesz zakoÅ„czyÄ‡ program.");
+				System.out.println("1\tRoczny raport godzin dla pracownikÃ³w.");
+				System.out.println("2\tRoczny raport godzin dla projektÃ³w.");
+				System.out.println("3\tRaport projektÃ³w pracownika.");
+				System.out.println("4\tRaport nakÅ‚adu pracy na projekt dla pracownikÃ³w.");
+				System.out.println("5\tRaport pracownikÃ³w w danym projekcie");
 
-				// odczyt opcji menu u¿ytkownika
+				// odczytanie numeru opcji z menu 
 				input = scanner.nextLine();
 				System.out.println(input);
 				
 				
-				// rozpoznanie zakoñczenia programu
+				// rozpoznanie zakonczenia programu
 				
 				if(input.equals("exit")) {
-					System.out.println("Program poprawnie zakoñczy³ pracê. Zapraszamy ponownie.");
+					System.out.println("Program poprawnie zakoÅ„czyÅ‚ prace. Zapraszamy ponownie.");
 					break;
 				}
 				
-
 				int option;
 				try {
 					option = Integer.parseInt(input);
 				} catch (NumberFormatException e) {
-					System.out.println("Podaj liczbê z menu!");
+					System.out.println("Podaj liczbÄ™ z menu!");
 					continue;
 				}
 
-				// obs³uga opcji menu
+				// obsluga wszystkich opcji menu
 				switch (option) {
 				case 1:
 					System.out.println("Raport 1");
-					System.out.println("Czy wyeksportowaæ raport do PDF? Jeœli tak, wpisz 't'.");
+					System.out.println("Czy wyeksportowaÄ‡ raport do PDF? JeÅ›li tak, wpisz 't'.");
 					submenu = scanner.nextLine();
 					if (submenu.equals("t")) {
 						System.out.println("Eksport raportu do PDF...");
@@ -67,6 +70,15 @@ public class Reports {
 
 				}
 			}
+			
+			Reader reader=new Reader();
+
+			ArrayList<Path> allFiles=reader.getAllFiles(args[0]);
+			for (Path path: allFiles) {
+				System.out.println("PLIK:\t"+path.toString());
+				reader.readData(path);
+			}
+			
 		}
 
 		
