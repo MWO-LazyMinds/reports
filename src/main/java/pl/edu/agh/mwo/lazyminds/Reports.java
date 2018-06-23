@@ -11,7 +11,7 @@ public class Reports {
 		try (Scanner scanner = new Scanner(System.in)) {
 			String input = "";
 			String submenu = "";
-			while (!(input.equals("exit"))) {
+			while (true) {
 
 				// Menu g³ówne u¿ytkownika
 				System.out.println("Podaj numer operacji lub wpisz 'exit' jeœli chcesz zakoñczyæ program.");
@@ -24,6 +24,15 @@ public class Reports {
 				// odczyt opcji menu u¿ytkownika
 				input = scanner.nextLine();
 				System.out.println(input);
+				
+				
+				// rozpoznanie zakoñczenia programu
+				
+				if(input.equals("exit")) {
+					System.out.println("Program poprawnie zakoñczy³ pracê. Zapraszamy ponownie.");
+					break;
+				}
+				
 
 				int option;
 				try {
@@ -60,8 +69,7 @@ public class Reports {
 			}
 		}
 
-		System.out.println("Program poprawnie zakoñczy³ pracê. Zapraszamy ponownie.");
-
+		
 	}
 
 }
