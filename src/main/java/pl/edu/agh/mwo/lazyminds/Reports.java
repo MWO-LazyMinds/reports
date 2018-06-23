@@ -10,7 +10,7 @@ public class Reports {
 		String submenu = "";
 		submenu = scanner.nextLine();
 		if (submenu.equals("t")) {
-			System.out.println("Eksport raportu do PDF...");
+			System.out.println("Eksport raportu do PDF...\n");
 		} else {
 			System.out.println("Raport nie zostanie wyeksportowany do PDF. Powrót do menu g³ównego.\n");
 		}
@@ -18,7 +18,7 @@ public class Reports {
 
 	public static void main(String[] args) {
 
-		System.out.println("Witamy w systemie raportowania czasu pracy");
+		System.out.println("Witamy w systemie raportowania czasu pracy.\n");
 
 		try (Scanner scanner = new Scanner(System.in)) {
 			String input = "";
@@ -30,7 +30,7 @@ public class Reports {
 				System.out.println("2\tRoczny raport godzin dla projektów.");
 				System.out.println("3\tRaport projektów pracownika.");
 				System.out.println("4\tRaport nak³adu pracy na projekt dla pracowników.");
-				System.out.println("5\tRaport pracowników w danym projekcie");
+				System.out.println("5\tRaport pracowników w danym projekcie.");
 
 				// odczyt opcji menu u¿ytkownika
 				input = scanner.nextLine();
@@ -47,7 +47,7 @@ public class Reports {
 				try {
 					option = Integer.parseInt(input);
 				} catch (NumberFormatException e) {
-					System.out.println("Podaj liczbê z menu!");
+					System.out.println("Podaj liczbê z menu!\n");
 					continue;
 				}
 
