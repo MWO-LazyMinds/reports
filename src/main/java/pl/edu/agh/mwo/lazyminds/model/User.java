@@ -1,6 +1,7 @@
 package pl.edu.agh.mwo.lazyminds.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class User {
 
@@ -35,11 +36,7 @@ public class User {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
-		return result;
+		return Objects.hash(name,surname); 
 	}
 
 	@Override
