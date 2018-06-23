@@ -6,10 +6,10 @@ import java.util.List;
 import pl.edu.agh.mwo.lazyminds.model.User;
 import pl.edu.agh.mwo.lazyminds.model.WorkUnit;
 
-public class raport1 {
+public class EmployTotalHoursReport {
 	
 
-	public String employTotalHours(){ 
+	public String calculate(){ 
 		
 		HashMap<String, Integer> hmap = new HashMap<String, Integer>();
 		
