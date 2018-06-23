@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class User {
+public class User implements Comparable<User> {
 
 	private String name;
 	private String surname;
@@ -61,6 +61,11 @@ public class User {
 		super();
 		this.name = name;
 		this.surname = surname;
+	}
+
+	@Override
+	public int compareTo(User o) {
+		return this.getSurname().compareTo(o.getSurname());
 	}
 
 }

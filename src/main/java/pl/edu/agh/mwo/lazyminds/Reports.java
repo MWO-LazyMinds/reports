@@ -8,6 +8,7 @@ import java.util.Scanner;
 import pl.edu.agh.mwo.lazyminds.data.Reader;
 import pl.edu.agh.mwo.lazyminds.model.User;
 import pl.edu.agh.mwo.lazyminds.model.WorkUnit;
+import pl.edu.agh.mwo.lazyminds.reports.ReportOneEmployeesWorkingHoursPerYear;
 
 public class Reports {
 
@@ -29,8 +30,6 @@ public class Reports {
 			String[] nameAndSurname=fileName.split("_");
 			String name=nameAndSurname[0];
 			String surname=nameAndSurname[1];
-			System.out.println("NAME: "+name);
-			System.out.println("SURNAME: "+surname);
 			// koniec ustawiania name i surname
 			
 			// current user
@@ -56,12 +55,14 @@ public class Reports {
 		}
 		
 		// TEST zczytywania
-		for (User user: allUsers) {
+/*		for (User user: allUsers) {
 			System.out.println("USER: "+user.getName()+" "+user.getSurname());
 			for (WorkUnit wk: user.getWorkUnits()) {
 				System.out.println("\tPROJEKT: "+wk.getProject().getName()+", date: "+wk.getDate().toString()+", hours: "+wk.getHours());
 			}
 		}
+*/		
+
 		
 		/// start UI 
 		System.out.println("Witamy w systemie raportowania czasu pracy");
@@ -103,6 +104,8 @@ public class Reports {
 				switch (option) {
 				case 1:
 					System.out.println("Raport 1");
+					ReportOneEmployeesWorkingHoursPerYear report1=new ReportOneEmployeesWorkingHoursPerYear();
+					report1.generate(allUsers, 2011);
 					System.out.println("Czy wyeksportować raport do PDF? Jeśli tak, wpisz 't'.");
 					submenu = scanner.nextLine();
 					if (submenu.equals("t")) {
