@@ -1,4 +1,4 @@
-package pl.edu.agh.mwo.lazyminds;
+package pl.edu.agh.mwo.lazyminds.model;
 
 public class Project {
 	
