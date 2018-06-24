@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 
+import pl.edu.agh.mwo.lazyminds.charts.SampleBarChart;
 import pl.edu.agh.mwo.lazyminds.data.Reader;
 import pl.edu.agh.mwo.lazyminds.model.User;
 import pl.edu.agh.mwo.lazyminds.model.WorkUnit;
@@ -137,15 +138,19 @@ public class Reports {
 					report4.generate(allUsers);
 					exportReport(scanner);
 					break;
-				case 5:
-					System.out.println("Raport 5");
-					
+				case 5:					
+                    System.out.println("Raport 5");
+                    project = askForProject(scanner);
+                	exportReport(scanner);
+                    break;
+				case 6:
+                    System.out.println("Raport 6: słupkowy");
 
-					
-
-					exportReport(scanner);
-					break;
-
+                    SampleBarChart sampleBarChart= new SampleBarChart();
+                    year = askForYear(scanner);
+                    sampleBarChart.drawChart(allUsers, year);
+                	
+                    exportReport(scanner);
 				}
 			}
 
@@ -171,7 +176,7 @@ public class Reports {
 		
 		while(true) {
 			project = scanner.nextLine();
-			if (project.equals(null)) {
+			if (project.equals("")) {
 				System.out.println("Błędna wartość. Podaj poprawną nazwę projektu!");
 			} else {
 				break;
@@ -186,7 +191,7 @@ public class Reports {
 
 		while (true) {
 			worker = scanner.nextLine();
-			if (!checkIfStringHasOnlyLetters(worker)) {
+			if (!checkIfStringHasOnlyLetters(worker) || worker.equals("")) {
 				System.out.println("Błędna wartość. Podaj poprawne dane!");
 			} else {
 				worker = worker.toLowerCase();
@@ -232,6 +237,7 @@ public class Reports {
 		System.out.println("3\tRaport projektów pracownika.");
 		System.out.println("4\tRaport nakładu pracy na projekt dla pracowników.");
 		System.out.println("5\tRaport pracowników w danym projekcie");
+		System.out.println("6\tWykres słupkowy: roczny raport godzin dla projektów.");
 	}
 
 }
