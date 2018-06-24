@@ -106,6 +106,20 @@ public class Reports {
 					System.out.println("Raport 1");
 					ReportOneEmployeesWorkingHoursPerYear report1=new ReportOneEmployeesWorkingHoursPerYear();
 					report1.generate(allUsers, 2011);
+					System.out.println("podaj rok");
+					int year=0;
+					while (year==0) {
+						if (scanner.hasNextInt()) {
+							year=Integer.parseInt(scanner.nextLine());
+						} 
+						else {
+							System.out.println("nie liczba");
+							scanner.nextLine();
+						}
+					}
+					
+					System.out.println("ROK WYBRANY:"+year);
+					
 					System.out.println("Czy wyeksportować raport do PDF? Jeśli tak, wpisz 't'.");
 					submenu = scanner.nextLine();
 					if (submenu.equals("t")) {
