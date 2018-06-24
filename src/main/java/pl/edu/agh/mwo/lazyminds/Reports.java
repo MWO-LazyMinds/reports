@@ -131,9 +131,10 @@ public class Reports {
 					break;
 				case 4:
 					System.out.println("Raport 4");
+					ReportsWorkingProcent report4 = new ReportsWorkingProcent();
 					
-					year = askForYear(scanner);
-					
+					// year = askForYear(scanner);
+					report4.generate(allUsers);
 					exportReport(scanner);
 					break;
 				case 5:
