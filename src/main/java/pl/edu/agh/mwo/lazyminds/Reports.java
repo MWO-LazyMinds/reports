@@ -93,8 +93,10 @@ public class Reports {
 					continue;
 				}
 
-				
 				int year;
+				String name;
+				String surname;
+				String project;
 				// obsluga wszystkich opcji menu
 				switch (option) {
 				case 1:
@@ -103,13 +105,13 @@ public class Reports {
 
 					year = askForYear(scanner);
 					report1.generate(allUsers, year);
-					
+
 					exportReport(scanner);
 					break;
 				case 2:
 					System.out.println("RAPORT: Ilość godzin w projekcie na rok.");
 					ReportHowManyHoursPerProject report2 = new ReportHowManyHoursPerProject();
-					
+
 					year = askForYear(scanner);
 					report2.generate(allUsers, year);
 
@@ -117,8 +119,18 @@ public class Reports {
 					break;
 				case 3:
 					System.out.println("Raport 3");
-					exportReport(scanner);
 
+					year = askForYear(scanner);
+
+					System.out.println("Podaj imię pracownika:");
+					name = askForWorker(scanner);
+
+					System.out.println("Podaj nazwisko pracownika:");
+					surname = askForWorker(scanner);
+
+					System.out.println("Dane pracownika: " + name + " " + surname);
+
+					exportReport(scanner);
 					break;
 				case 4:
 					System.out.println("Raport 4");
@@ -138,6 +150,33 @@ public class Reports {
 
 	}
 
+	private static boolean checkIfStringHasOnlyLetters(String s) {
+		char[] chars = s.toCharArray();
+
+		for (char c : chars) {
+			if (!Character.isLetter(c)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private static String askForWorker(Scanner scanner) {
+		String worker = "";
+
+		while (true) {
+			worker = scanner.nextLine();
+			if (!checkIfStringHasOnlyLetters(worker)) {
+				System.out.println("Błędna wartość. Podaj poprawne dane!");
+			} else {
+				worker = worker.toLowerCase();
+				break;
+			}
+		}
+
+		return worker;
+	}
+
 	private static int askForYear(Scanner scanner) {
 		System.out.println("Podaj rok:");
 		int year = 0;
@@ -145,7 +184,7 @@ public class Reports {
 			if (scanner.hasNextInt()) {
 				year = Integer.parseInt(scanner.nextLine());
 			} else {
-				System.out.println("Błędna wartośc. Podaj poprawny rok!");
+				System.out.println("Błędna wartość. Podaj poprawny rok!");
 				scanner.nextLine();
 			}
 		}
