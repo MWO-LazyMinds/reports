@@ -70,19 +70,29 @@ public class Reports {
 		try (Scanner scanner = new Scanner(System.in)) {
 			String input = "";
 			String submenu = "";
+			String typeYear = "";
 			while (true) {
 
-				// Menu glowne uzytkownika
-				System.out.println("Podaj numer operacji lub wpisz 'exit' jeśli chcesz zakończyć program.");
-				System.out.println("1\tRoczny raport godzin dla pracowników.");
-				System.out.println("2\tRoczny raport godzin dla projektów.");
-				System.out.println("3\tRaport projektów pracownika.");
-				System.out.println("4\tRaport nakładu pracy na projekt dla pracowników.");
-				System.out.println("5\tRaport pracowników w danym projekcie");
+				main_menu();
 
 				// odczytanie numeru opcji z menu 
 				input = scanner.nextLine();
 				System.out.println(input);
+				
+				// pobranie danych do raportu od użytkownika
+				if (input.equals("1")) {
+					System.out.println("Podaj rok, dla którego chcesz wygenerować raport:");
+					typeYear = scanner.nextLine();
+				}
+				
+				// weryfikacja czy użytkownik poprawnie wprowadził rok
+				int year;
+				try {
+					year = Integer.parseInt(typeYear);
+				} catch (NumberFormatException e) {
+					System.out.println("Podaj poprawny rok!");
+					continue;
+				}
 				
 				
 				// rozpoznanie zakonczenia programu
@@ -105,11 +115,13 @@ public class Reports {
 				case 1:
 					System.out.println("Raport 1");
 					ReportOneEmployeesWorkingHoursPerYear report1=new ReportOneEmployeesWorkingHoursPerYear();
-					report1.generate(allUsers, 2011);
+					report1.generate(allUsers, year);
 					System.out.println("Czy wyeksportować raport do PDF? Jeśli tak, wpisz 't'.");
 					submenu = scanner.nextLine();
 					if (submenu.equals("t")) {
 						System.out.println("Eksport raportu do PDF...");
+					} else {
+						System.out.println("Raport nie zostanie eksportowany. Powrót do głównego menu.\n"); 
 					}
 					break;
 				case 2:
@@ -131,6 +143,16 @@ public class Reports {
 		}
 
 		
+	}
+
+	private static void main_menu() {
+		// Menu glowne uzytkownika
+		System.out.println("Podaj numer operacji lub wpisz 'exit' jeśli chcesz zakończyć program.");
+		System.out.println("1\tRoczny raport godzin dla pracowników.");
+		System.out.println("2\tRoczny raport godzin dla projektów.");
+		System.out.println("3\tRaport projektów pracownika.");
+		System.out.println("4\tRaport nakładu pracy na projekt dla pracowników.");
+		System.out.println("5\tRaport pracowników w danym projekcie");
 	}
 
 }
