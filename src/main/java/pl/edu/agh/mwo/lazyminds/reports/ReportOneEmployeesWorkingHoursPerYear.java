@@ -11,15 +11,18 @@ import pl.edu.agh.mwo.lazyminds.model.WorkUnit;
 public class ReportOneEmployeesWorkingHoursPerYear {
 
 	public void generate(HashSet<User> users,int year){ 
+		year = year-1900;
 		
 		HashMap<User, Integer> hmap = new HashMap<User, Integer>();
 		
 		for (User user: users) {
 			int totalHours=0;
 			for (WorkUnit wk: user.getWorkUnits()) {
+				if (wk.getDate().getYear() == year) {
 				totalHours+=wk.getHours();
 			}
-				
+			}
+			
 			hmap.put(user, totalHours);
 		}
 		SortedSet<User> keys = new TreeSet<User>(hmap.keySet());
