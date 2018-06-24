@@ -100,14 +100,7 @@ public class ReportHowManyHoursPerProject {
 			hmap.put(project, total);
 		}
 
-		SortedSet<Project> keys = new TreeSet<Project>(hmap.keySet());
-		System.out.println("RAPORT 2:");
-		System.out.println("Projekt\tGODZINY");
-		for (Project key : keys) {
-			String name = key.getName();
-			Integer value = hmap.get(key);
-			System.out.println(name + "\t" + value);
-		}
+
 		return hmap;
 	}
 	
