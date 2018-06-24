@@ -8,6 +8,7 @@ import java.util.Scanner;
 import pl.edu.agh.mwo.lazyminds.data.Reader;
 import pl.edu.agh.mwo.lazyminds.model.User;
 import pl.edu.agh.mwo.lazyminds.model.WorkUnit;
+import pl.edu.agh.mwo.lazyminds.reports.ReportHowManyHoursPerProject;
 import pl.edu.agh.mwo.lazyminds.reports.ReportOneEmployeesWorkingHoursPerYear;
 
 public class Reports {
@@ -114,6 +115,8 @@ public class Reports {
 					break;
 				case 2:
 					System.out.println("Raport 2");
+					ReportHowManyHoursPerProject report2 = new ReportHowManyHoursPerProject();
+					report2.generate(allUsers, 2012);
 					break;
 				case 3:
 					System.out.println("Raport 3");

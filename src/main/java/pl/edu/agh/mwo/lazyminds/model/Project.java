@@ -2,7 +2,7 @@ package pl.edu.agh.mwo.lazyminds.model;
 
 import java.util.Objects;
 
-public class Project {
+public class Project implements Comparable<Project>{
 	
 	public Project(String name) {
 		super();
@@ -33,5 +33,12 @@ public class Project {
 		}
 
 	}
+
+	@Override
+	public int compareTo(Project o) {
+		// TODO Auto-generated method stub
+		return this.getName().compareTo(o.getName());
+	}
+
 
 }
