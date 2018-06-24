@@ -121,26 +121,28 @@ public class Reports {
 					System.out.println("Raport 3");
 
 					year = askForYear(scanner);
-
 					System.out.println("Podaj imię pracownika:");
 					name = askForWorker(scanner);
-
 					System.out.println("Podaj nazwisko pracownika:");
 					surname = askForWorker(scanner);
-
 					System.out.println("Dane pracownika: " + name + " " + surname);
 
 					exportReport(scanner);
 					break;
 				case 4:
 					System.out.println("Raport 4");
+					
+					year = askForYear(scanner);
+					
 					exportReport(scanner);
-
 					break;
 				case 5:
 					System.out.println("Raport 5");
-					exportReport(scanner);
+					
 
+					
+
+					exportReport(scanner);
 					break;
 
 				}
@@ -160,7 +162,24 @@ public class Reports {
 		}
 		return true;
 	}
-
+	
+	private static String askForProject(Scanner scanner) {
+		String project = "";
+		
+		System.out.println("Podaj nazwę projektu:");
+		
+		while(true) {
+			project = scanner.nextLine();
+			if (project.equals(null)) {
+				System.out.println("Błędna wartość. Podaj poprawną nazwę projektu!");
+			} else {
+				break;
+			}
+		}
+		
+		return project;
+	}
+	
 	private static String askForWorker(Scanner scanner) {
 		String worker = "";
 
