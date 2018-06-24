@@ -70,7 +70,6 @@ public class Reports {
 		try (Scanner scanner = new Scanner(System.in)) {
 			String input = "";
 			String submenu = "";
-			String typeYear = "";
 			while (true) {
 
 				main_menu();
@@ -79,24 +78,8 @@ public class Reports {
 				input = scanner.nextLine();
 				System.out.println(input);
 				
-				// pobranie danych do raportu od użytkownika
-				if (input.equals("1")) {
-					System.out.println("Podaj rok, dla którego chcesz wygenerować raport:");
-					typeYear = scanner.nextLine();
-				}
-				
-				// weryfikacja czy użytkownik poprawnie wprowadził rok
-				int year;
-				try {
-					year = Integer.parseInt(typeYear);
-				} catch (NumberFormatException e) {
-					System.out.println("Podaj poprawny rok!");
-					continue;
-				}
-				
 				
 				// rozpoznanie zakonczenia programu
-				
 				if(input.equals("exit")) {
 					System.out.println("Program poprawnie zakończył prace. Zapraszamy ponownie.");
 					break;
@@ -115,6 +98,20 @@ public class Reports {
 				case 1:
 					System.out.println("Raport 1");
 					ReportOneEmployeesWorkingHoursPerYear report1=new ReportOneEmployeesWorkingHoursPerYear();
+					
+					// pobranie danych wejściowych od uzytkownika
+					System.out.println("Podaj rok, dla którego chcesz wygenerować raport:");
+					String typeYear = scanner.nextLine();
+					
+					// weryfikacja czy użytkownik poprawnie wprowadził rok
+					int year;
+					try {
+						year = Integer.parseInt(typeYear);
+					} catch (NumberFormatException e) {
+						System.out.println("Podaj poprawny rok!");
+						continue;
+					}
+					
 					report1.generate(allUsers, year);
 					System.out.println("Czy wyeksportować raport do PDF? Jeśli tak, wpisz 't'.");
 					submenu = scanner.nextLine();
@@ -154,5 +151,6 @@ public class Reports {
 		System.out.println("4\tRaport nakładu pracy na projekt dla pracowników.");
 		System.out.println("5\tRaport pracowników w danym projekcie");
 	}
+
 
 }
