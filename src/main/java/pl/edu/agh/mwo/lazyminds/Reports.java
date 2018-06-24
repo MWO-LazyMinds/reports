@@ -98,7 +98,7 @@ public class Reports {
 				// obsluga wszystkich opcji menu
 				switch (option) {
 				case 1:
-					System.out.println("Raport 1");
+					System.out.println("RAPORT: Ilość godzin pracownika w roku.");
 					ReportOneEmployeesWorkingHoursPerYear report1 = new ReportOneEmployeesWorkingHoursPerYear();
 
 					year = askForYear(scanner);
@@ -107,7 +107,7 @@ public class Reports {
 					exportReport(scanner);
 					break;
 				case 2:
-					System.out.println("Raport 2");
+					System.out.println("RAPORT: Ilość godzin w projekcie na rok.");
 					year = askForYear(scanner);
 
 					exportReport(scanner);
