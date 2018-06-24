@@ -20,6 +20,15 @@
 			<artifactId>poi</artifactId>
 			<version>3.17</version>
 		</dependency>
+		
+			<!-- https://knowm.org/open-source/xchart/xchart-example-code/ -->
+	<dependency>
+    <groupId>org.knowm.xchart</groupId>
+    <artifactId>xchart</artifactId>
+    <version>3.5.2</version>
+</dependency>
+
+		
 
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
 		<dependency>
