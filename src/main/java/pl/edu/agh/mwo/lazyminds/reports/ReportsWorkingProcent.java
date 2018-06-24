@@ -9,7 +9,7 @@ import pl.edu.agh.mwo.lazyminds.model.WorkUnit;
 
 public class ReportsWorkingProcent {
 
-    public void project2(HashSet<User> users) {
+    public void generate(HashSet<User> users) {
 
 		ArrayList<User> reportUsers = new ArrayList<User>();
 		ArrayList<Integer> hours = new ArrayList<Integer>();
